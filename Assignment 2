@@ -1,1 +1,47 @@
+import pandas as pd
+import seaborn as see
+import matplotlib.pyplot as plt
+
+ab = pd.read_csv(r"D:\assigenment\UberDataset.csv")
+
+# Summary
+print(ab.info())
+
+print('------------------------------------------------') #Just for margin
+
+print(ab.describe())
+
+print('------------------------------------------------') #Just for margin
+
+# Null values
+print(ab.isnull().sum())
+
+print('------------------------------------------------') #Just for margin
+
+# Duplicates
+print(ab.duplicated())
+print(ab.duplicated().sum())
+
+print('------------------------------------------------') #Just for margin
+
+# Outliers
+aa = see.boxplot(data=ab['MILES'])
+print(aa)
+
+print('------------------------------------------------') #Just for margin
+
+
+# Missing values (Drop all null rows)
+misvalu = ab_cleaned = ab.dropna()
+
+print(misvalu)
+print('------------------------------------------------') #Just for margin
+# Remove duplicates
+RemoveD = ab_cleaned = ab_cleaned.drop_duplicates()
+print(RemoveD)
+print('------------------------------------------------') #Just for margin
+
+# Save the cleaned file
+ab_cleaned.to_csv("cleaned_fake_jobs.csv", index=False)
+
 
